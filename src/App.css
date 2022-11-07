@@ -1,8 +1,91 @@
 .App {
+  background-color: #B3AFC6;
+  width: 100vw;
+  height: 100vh;
+  align-items: center;
+}
+
+.App, .editor, .previewer {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
+}
+
+.editor, .previewer, .editor-max, .previewer-max {
+  box-shadow: 1px 1px 10px 2px gray;
+  margin-top: 2%;
+}
+
+.editor {
+  width: 25%;
+  min-height: 15%;
+  max-height: 30%;
+  border-radius: 10px;
+}
+
+.previewer {
+  width: 60%;
+  height: 50%;
+  margin-top: 2%;
+}
+
+.previewer-max {
+  height: 75%;
+  width: 80%;
+}
+
+.editor-max {
+  border-radius: 10px;
+  width: 30%;
+  height: 75%;
+}
+
+.editor-max .text-area {
+  resize: none;
+  min-height: 95%;
+}
+
+.text-area, .markup-preview {
+  height: fill;
+  padding: 1% 2%;
+  width: fill;
+}
+.editor .header {
+  border-radius: 10px 10px 0 0;
+}
+.text-area {
+  resize: vertical;
+  border-radius: 0 0 10px 10px;
+  font-size: 1.2em;
+  min-height: 75%;
+}
+
+.markdown {
+  width: auto;
   height: 100%;
+  overflow-y: scroll;
+  background-color: white;
+}
+
+.header {
+  background-color: #617AA6;
+  color: #FAF8F9;
+  width: auto;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: solid 1px black;
+}
+
+.icon {
+  padding-right: 10px;
+}
+
+.icon:hover {
+  cursor: pointer;
+  color: #7FA0CF;
+}
+
+.title {
+  padding-left: 10px;
 }

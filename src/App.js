@@ -2,40 +2,37 @@ import './App.css';
 import Editor from "./Editor"
 import Previewer from "./Previewer"
 import React from "react"
-
-
+import placeholder from "./placeholder"
 function App() {
 
-  const [text, setText] = React.useState("hello")
-  
+  const [text, setText] = React.useState(JSON.parse(localStorage.getItem('text')) || placeholder)
   const [editorMax, setEditorMax] = React.useState(false)
   const [previewerMax, setPreviewerMax] = React.useState(false)
-
-  function expandEditor() {
-    setEditorMax(prevState => !prevState)
-  }
 
 function handleChange(event) {
   setText(event.target.value)
 }
 
-let content
-const editor = <Editor handleChange={handleChange} display={text} />
-const previewer = <Previewer preview={text}/>
+React.useEffect(() => {
+  localStorage.setItem('text', JSON.stringify(text))
+}, [text])
 
-if (editorMax) {
-  content = editor
-} else if (previewerMax) {
-  content = previewer
-} else {
-    content = editor + previewer
+function toggleEditor() {
+  setEditorMax(prevState => !prevState)
+  console.log("toggled")
 }
 
+function togglePreviewer() {
+  setPreviewerMax(prevState => !prevState)
+}
 
   return (
     <div className="App">
-      {content}
+      {previewerMax === false && <Editor handleChange={handleChange} display={text} toggle={toggleEditor} maximised={editorMax} />}
+      {editorMax === false && <Previewer preview={text} toggle={togglePreviewer} maximised={previewerMax} />}
+      <p><strong>Built By Tomrso</strong></p>
     </div>
+    
   );
 }
 
