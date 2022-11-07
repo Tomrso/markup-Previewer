@@ -45,9 +45,9 @@
 }
 
 .text-area, .markup-preview {
-  height: fill;
+  height: stretch;
   padding: 1% 2%;
-  width: fill;
+  width: stretch;
 }
 .editor .header {
   border-radius: 10px 10px 0 0;
